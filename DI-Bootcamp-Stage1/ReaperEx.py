@@ -24,13 +24,31 @@ check_sign(-5)  # Output: "Negative"
 check_sign(0)   # Output: "Zero"
 print("")
 
-print_days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-for day in print_days:
-    print(day)  
 
-find_largest = [3, 7, 2, 9, 5]
-largest = find_largest[0] 
-for num in find_largest:
-    if num > largest:
-        largest = num
-print(f"The largest number is: {largest}")  
+def find_largest(numbers):
+    largest = numbers[0]
+    for num in numbers:
+        if num > largest:
+            largest = num
+    return largest
+
+print(find_largest([1, 2, 3, 4]))  
+print(find_largest([10, 20, 5])) 
+print("")
+
+def check_letter(word, letter):
+    if letter in word:
+        print("True")
+    else:
+        print("False")
+
+check_letter("Hello", "e")  
+check_letter("Hello", "a")  
+
+def count_to_number(n):
+    for i in range(1, n + 1):
+        print(i)
+print("")
+count_to_number(3)
+print("")
+count_to_number(5)  
