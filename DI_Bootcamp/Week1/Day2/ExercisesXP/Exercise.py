@@ -41,7 +41,7 @@ if Name_Test == "Daniel":
 else :
     print("Too bad our names dont match , here's a Thumbsdown 👎")    
 #Exercise_9
-Check_height = int(input("What's your heigh is in CM:"))
+Check_height = int(input("What's your height is in CM:"))
 
 if Check_height > 145:
     print("You are tall enough to get on the roller coaster!")
