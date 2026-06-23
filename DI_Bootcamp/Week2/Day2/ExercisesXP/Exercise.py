@@ -71,6 +71,6 @@ def main():
     elif temp < 32:
         print("A bit warm, stay hydrated.")
     else:
-        print("It’s really hot! Stay cool.")
+        print("It's really hot! Stay cool.")
 
 main()
