@@ -2,7 +2,7 @@
 
 board = [["","", ""], ["", "", ""], ["", "", ""]]
 
-def print_board():       # A Function to Prints the Board !
+def print_board():       # A Function that Prints the Board !
     for i, row in enumerate(board):
         display = [cell if cell != "" else " " for cell in row]
         print(" | ".join(display))
