@@ -19,4 +19,5 @@ for col in range(columns):
         else:
             decoded_message += " "
 
+print(matrix)
 print(decoded_message)

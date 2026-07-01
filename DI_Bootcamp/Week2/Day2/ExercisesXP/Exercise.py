@@ -65,7 +65,7 @@ def main():
     if temp < 0:
         print("Brrr, it's freezing! Wear some extra layers today!")
     elif temp < 16:
-        print("Quite chilly! Don’t forget your coat.") 
+        print("Quite chilly! Don't forget your coat.") 
     elif temp < 23:
         print("Nice weather.")
     elif temp < 32:
