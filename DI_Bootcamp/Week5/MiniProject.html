@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RoboFriends</title>
+<style>
+    @import url('https://fonts.cdnfonts.com/css/sega-logo-font');
+  :root {
+    --green: #4bd97c;
+    --purple-bg: #6a4fd9;
+    --card-teal: #3ec9c0;
+    --circle-dark: #2b2f4a;
+    --text-dark: #1a1a2e;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f4f4;
+  }
+
+  header {
+    background: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header .logo {
+    font-family: 'SEGA LOGO FONT', sans-serif;
+    font-weight: 900;
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: var(--text-dark);
+    z-index: 2;
+  }
+
+  header input[type="text"] {
+    display: block;      
+    margin: 0 auto;      
+    padding: 10px 16px;
+    width: 320px;
+    border: none;
+    border-radius: 3px;
+    background: #dfe6f0;
+    font-size: 14px;
+    z-index: 2;
+    }
+  header input[type="text"]:focus {
+    outline: 3px solid rgba(0,0,0,0.15);
+ }
+  main {
+    background-color: var(--purple-bg);
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 28px 28px;
+    padding: 40px;
+    min-height: calc(100vh - 76px);
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .robot-card {
+    background: var(--card-teal);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .robot-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  }
+
+  .avatar-wrap {
+    background: var(--circle-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 0;
+  }
+
+  .avatar-wrap img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #fff;
+  }
+
+  .robot-info {
+    padding: 16px 20px 22px;
+  }
+
+  .robot-info h2 {
+    font-size: 20px;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+  }
+
+  .robot-info p {
+    font-size: 13px;
+    color: #1a1a2ecc;
+  }
+
+  .no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    padding: 60px 0;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">ROBOFRIENDS</div>
+  <input type="text" id="searchBox" placeholder="Search Robots" autocomplete="off">
+</header>
+
+<main>
+  <div class="card-grid" id="cardGrid"></div>
+</main>
+
+<script>
+  const robots = [
+          {
+            id: 1,
+            name: 'Leanne Graham',
+            username: 'Bret',
+            email: 'Sincere@april.biz',
+            image: 'https://robohash.org/1?200x200'
+          },
+          {
+            id: 2,
+            name: 'Ervin Howell',
+            username: 'Antonette',
+            email: 'Shanna@melissa.tv',
+            image: 'https://robohash.org/2?200x200'
+          },
+          {
+            id: 3,
+            name: 'Clementine Bauch',
+            username: 'Samantha',
+            email: 'Nathan@yesenia.net',
+            image: 'https://robohash.org/3?200x200'
+          },
+          {
+            id: 4,
+            name: 'Patricia Lebsack',
+            username: 'Karianne',
+            email: 'Julianne.OConner@kory.org',
+            image: 'https://robohash.org/4?200x200'
+          },
+          {
+            id: 5,
+            name: 'Chelsey Dietrich',
+            username: 'Kamren',
+            email: 'Lucio_Hettinger@annie.ca',
+            image: 'https://robohash.org/5?200x200'
+          },
+          {
+            id: 6,
+            name: 'Mrs. Dennis Schulist',
+            username: 'Leopoldo_Corkery',
+            email: 'Karley_Dach@jasper.info',
+            image: 'https://robohash.org/6?200x200'
+          },
+          {
+            id: 7,
+            name: 'Kurtis Weissnat',
+            username: 'Elwyn.Skiles',
+            email: 'Telly.Hoeger@billy.biz',
+            image: 'https://robohash.org/7?200x200'
+          },
+          {
+            id: 8,
+            name: 'Nicholas Runolfsdottir V',
+            username: 'Maxime_Nienow',
+            email: 'Sherwood@rosamond.me',
+            image: 'https://robohash.org/8?200x200'
+          },
+          {
+            id: 9,
+            name: 'Glenna Reichert',
+            username: 'Delphine',
+            email: 'Chaim_McDermott@dana.io',
+            image:'https://robohash.org/9?200x200'
+          },
+          {
+            id: 10,
+            name: 'Clementina DuBuque',
+            username: 'Moriah.Stanton',
+            email: 'Rey.Padberg@karina.biz',
+            image:'https://robohash.org/10?200x200'
+          }
+          ];
+
+  const cardGrid = document.getElementById('cardGrid');
+  const searchBox = document.getElementById('searchBox');
+
+  function renderCards(list) {
+    cardGrid.innerHTML = '';
+
+    if (list.length === 0) {
+      const msg = document.createElement('div');
+      msg.className = 'no-results';
+      msg.textContent = 'No robots match your search.';
+      cardGrid.appendChild(msg);
+      return;
+    }
+
+    list.forEach(robot => {
+      const card = document.createElement('div');
+      card.className = 'robot-card';
+      card.innerHTML = `
+        <div class="avatar-wrap">
+          <img src="${robot.image}" alt="${robot.name}">
+        </div>
+        <div class="robot-info">
+          <h2>${robot.name}</h2>
+          <p>${robot.email}</p>
+        </div>
+      `;
+      cardGrid.appendChild(card);
+    });
+  }
+
+  searchBox.addEventListener('input', (e) => {
+    const term = e.target.value.toLowerCase();
+    const filtered = robots.filter(r => r.name.toLowerCase().includes(term));
+    renderCards(filtered);
+  });
+
+  renderCards(robots);
+
+</script>
+
+</body>
+</html>

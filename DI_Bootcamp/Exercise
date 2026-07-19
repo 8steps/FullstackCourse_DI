@@ -1,0 +1,33 @@
+const myArray = [1, 2, 3, 4, 5];
+
+const myMap = (arr, myFn) => {
+  const result = [];
+  arr.forEach(e => {
+    result.push(myFn(e));
+  });
+  return result;
+};
+
+const myFilter = (arr, myFn) => {
+  const result = [];
+  arr.forEach(e => {
+    if (myFn(e)) {
+      result.push(e);
+    }
+  });
+  return result;
+};
+
+const myReduce = (arr, myFn, myInitialValue) => {
+  let accumulator = myInitialValue;
+  arr.forEach(e => {
+    accumulator = myFn(accumulator, e);
+  });
+  return accumulator;
+};
+
+
+
+console.log(myMap(myArray, e => e * 2));       
+console.log(myFilter(myArray, e => e % 2 === 0)); 
+console.log(myReduce(myArray, (a, b) => a + b, 0));

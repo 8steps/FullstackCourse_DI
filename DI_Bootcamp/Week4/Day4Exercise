@@ -1,0 +1,11 @@
+const colors = ["Blue", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow"];
+let i = 0;
+
+for(i = 0; i < colors.length; i++) {
+    console.log(i + "#Choice is " + colors[i] + "\n");
+    if (colors[i] === "Violet") {
+        console.log("Yeah");
+    } else {
+        console.log("No...");
+    }
+}
